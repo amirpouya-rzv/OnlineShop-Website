@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Link from "next/link";
 import AppButton from "@/components/AppButton";
 
 // تعریف نوع محصول
@@ -65,7 +64,7 @@ async function ProductItem() {
             </div>
           </CardFooter>
           <AppButton type="button" href={`/product/${product.id}`} className="w-10/12
-          mx-6 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm text-center py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-5"> more details</AppButton>
+          mx-6 focus:outline-none text-white bg-[#C1121F] hover:bg-[#780000] focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm text-center py-2.5 dark:bg-green-600 dark:hover:bg-[#C1121F]  mb-5"> more details</AppButton>
 
         </Card>
       ))}
