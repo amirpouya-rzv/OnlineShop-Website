@@ -4,7 +4,8 @@ import "./globals.css";
 
 import Headers from "@/components/Headers";
 import Footer from "@/components/Footer";
-
+import { ReduxProvider } from "@/redux/ReduxProvider";
+import ThemeApplier from "@/components/ThemeApplier";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,17 +28,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased `}>
-      <body className="bg-background-color font">
-        <main className="flex-col ">
-          <Headers />
-
-          <div className="px-20 mt-10 mb-20 ">{children}</div>
-
-         <Footer/>
-        </main>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body>
+        <ReduxProvider>
+          <ThemeApplier />
+          <main className="flex-col ">
+            <Headers />
+            <div className="px-20 mt-10 mb-20">{children}</div>
+            <Footer />
+          </main>
+        </ReduxProvider>
       </body>
     </html>
   );
 }
-

@@ -27,14 +27,14 @@ async function ProductItem() {
 
 
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className=" grid grid-cols-1 md:grid-cols-3   lg:grid-cols-4 gap-6">
       {products.map((product) => (
         <Card
           key={product.id}
           className="hover:shadow-2xl transition-shadow flex flex-col h-full"
         >
           <CardHeader>
-            <CardTitle className="text-base mt-5 font-semibold line-clamp-2">
+            <CardTitle className="text-base mt-5  font-semibold line-clamp-2">
               {product.title}
             </CardTitle>
           </CardHeader>
@@ -49,10 +49,10 @@ async function ProductItem() {
           </div>
 
           <CardContent className="flex flex-col gap-2 flex-grow">
-            <CardDescription className="text-sm text-gray-500 capitalize">
+            <CardDescription className="text-sm text-gray-500  capitalize">
               {product.category}
             </CardDescription>
-            <p className="text-sm text-gray-700 line-clamp-3 text-balance">
+            <p className="text-sm text-gray-700  line-clamp-3 text-balance">
               {product.description}
             </p>
           </CardContent>

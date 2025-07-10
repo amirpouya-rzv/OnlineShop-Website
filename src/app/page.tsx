@@ -1,13 +1,15 @@
-import { Banner } from '@/components/banner';
 import React from 'react';
 import Home from './home/page';
+import { ReduxProvider } from "@/redux/ReduxProvider";
 
 
 const page = () => {
   return (
-    <div>
-      <Home />
-    </div>
+    <ReduxProvider>
+      <div>
+        <Home />
+      </div>
+    </ReduxProvider>
   );
 };
 
