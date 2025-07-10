@@ -40,8 +40,8 @@ function Headers() {
         {/* Full Menu: Logo + Links + Icons */}
         <div
           className={`
-            md:flex md:flex-row md:justify-between items-center md:h-32
-            backdrop-blur-xl bg-gradient-to-r from-[#003049]/80 to-[#669bbc]/80 border-b-2 border-[#c1121f] text-white
+            md:flex md:flex-row md:justify-between items-center md:h-24
+            backdrop-blur-xl bg-gradient-to-r from-[#003049]/80 to-[#669bbc]/80 text-white
             fixed md:static inset-0 md:inset-auto
             overflow-hidden
             transition-all duration-700 ease-in-out transform
@@ -59,11 +59,11 @@ function Headers() {
           </div>
 
           {/* Links */}
-          <div className="flex flex-col md:flex-row items-center gap-5 text-lg font-semibold">
-            <Link href={'/product'} onClick={() => setShowMenu(false)} className="hover:text-[#ffbe0b] transition-colors duration-300">Product 1</Link>
-            <Link href={'/'} onClick={() => setShowMenu(false)} className="hover:text-[#ffbe0b] transition-colors duration-300">Product 2</Link>
-            <Link href={'/'} onClick={() => setShowMenu(false)} className="hover:text-[#ffbe0b] transition-colors duration-300">Product 3</Link>
-            <Link href={'/'} onClick={() => setShowMenu(false)} className="hover:text-[#ffbe0b] transition-colors duration-300">Product 4</Link>
+          <div className="flex flex-col md:flex-row items-center gap-5">
+            <Link href={'/'} onClick={() => setShowMenu(false)} className="hover:text-[#ffbe0b] transition-colors duration-300">Home</Link>
+            <Link href={'/product'} onClick={() => setShowMenu(false)} className="hover:text-[#ffbe0b] transition-colors duration-300">Product</Link>
+            <Link href={'/'} onClick={() => setShowMenu(false)} className="hover:text-[#ffbe0b] transition-colors duration-300">About Us</Link>
+            <Link href={'/'} onClick={() => setShowMenu(false)} className="hover:text-[#ffbe0b] transition-colors duration-300">Contact Us</Link>
           </div>
 
           {/* Icon */}

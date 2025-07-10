@@ -34,7 +34,7 @@ async function ProductId({
       <img
         src={product.image}
         alt={product.title}
-        className="w-96 h-52 object-cover mb-4"
+        className="w-64 h-64 object-cover mb-4"
       />
       <p className="mb-2 text-center">{product.description}</p>
       <p className="font-semibold">Price: ${product.price}</p>

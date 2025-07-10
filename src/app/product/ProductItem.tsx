@@ -27,7 +27,7 @@ async function ProductItem() {
 
 
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {products.map((product) => (
         <Card
           key={product.id}
@@ -52,7 +52,7 @@ async function ProductItem() {
             <CardDescription className="text-sm text-gray-500 capitalize">
               {product.category}
             </CardDescription>
-            <p className="text-sm text-gray-700 line-clamp-3 text-justify">
+            <p className="text-sm text-gray-700 line-clamp-3 text-balance">
               {product.description}
             </p>
           </CardContent>
@@ -64,7 +64,7 @@ async function ProductItem() {
             </div>
           </CardFooter>
           <AppButton type="button" href={`/product/${product.id}`} className="w-10/12
-          mx-6 focus:outline-none text-white bg-[#C1121F] hover:bg-[#780000] focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm text-center py-2.5 dark:bg-green-600 dark:hover:bg-[#C1121F]  mb-5"> more details</AppButton>
+          mx-6 focus:outline-none text-white bg-light-red hover:bg-dark-red focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm text-center py-2.5 dark:hover:bg-light-red  mb-5"> more details</AppButton>
 
         </Card>
       ))}
