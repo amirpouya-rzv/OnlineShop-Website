@@ -32,9 +32,9 @@ export default function RootLayout({
       <body>
         <ReduxProvider>
           <ThemeApplier />
-          <main className="flex-col ">
+          <main className="flex-col dark:bg-bg-dark">
             <Headers />
-            <div className="px-20 mt-10 mb-20">{children}</div>
+            <div className="p-12  mb-20">{children}</div>
             <Footer />
           </main>
         </ReduxProvider>

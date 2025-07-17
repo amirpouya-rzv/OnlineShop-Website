@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import AppButton from "@/components/AppButton";
+import { ShoppingCart } from "lucide-react";
 
 // تعریف نوع محصول
 type Product = {
@@ -27,11 +28,11 @@ async function ProductItem() {
 
 
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-3   lg:grid-cols-4 gap-6">
+    <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {products.map((product) => (
         <Card
           key={product.id}
-          className="hover:shadow-2xl transition-shadow flex flex-col h-full"
+          className="hover:shadow-2xl dark:border dark:border-light-blue dark:shadow-sm dark:shadow-light-blue  dark:text-white dark:bg-dark-card bg- transition-shadow flex flex-col h-full"
         >
           <CardHeader>
             <CardTitle className="text-base mt-5  font-semibold line-clamp-2">
@@ -49,10 +50,10 @@ async function ProductItem() {
           </div>
 
           <CardContent className="flex flex-col gap-2 flex-grow">
-            <CardDescription className="text-sm text-gray-500  capitalize">
+            <CardDescription className="text-sm text-gray-500 dark:text-background-color capitalize">
               {product.category}
             </CardDescription>
-            <p className="text-sm text-gray-700  line-clamp-3 text-balance">
+            <p className="text-sm text-gray-700 dark:text-background-color line-clamp-3 text-balance">
               {product.description}
             </p>
           </CardContent>
@@ -64,7 +65,7 @@ async function ProductItem() {
             </div>
           </CardFooter>
           <AppButton type="button" href={`/product/${product.id}`} className="w-10/12
-          mx-6 focus:outline-none text-white bg-light-red hover:bg-dark-red focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm text-center py-2.5 dark:hover:bg-light-red  mb-5"> more details</AppButton>
+          mx-6 focus:outline-none text-white dark:bg-bg-dark-blue bg-dark-blue focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm text-center py-2.5 dark:hover:bg-dark-blue  mb-5"> more details</AppButton>
 
         </Card>
       ))}
