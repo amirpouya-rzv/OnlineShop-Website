@@ -12,7 +12,7 @@ type Product = {
   image: string;
 };
 
-// Static params باید نام پارامتر داینامیک را درست بدهد
+// این باید دقیقا با اسم [productId] یکی باشه
 export async function generateStaticParams() {
   return [
     { productId: "1" },
@@ -22,13 +22,13 @@ export async function generateStaticParams() {
   ];
 }
 
-// Props تایپ دقیق داشته باشد
-type PageProps = {
+export default async function ProductPage({
+  params,
+  searchParams,
+}: {
   params: { productId: string };
   searchParams?: { [key: string]: string | string[] | undefined };
-};
-
-const ProductPage = async ({ params, searchParams }: PageProps) => {
+}) {
   const { productId } = params;
   const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
 
@@ -41,9 +41,9 @@ const ProductPage = async ({ params, searchParams }: PageProps) => {
 
   return (
     <div className="p-4 flex flex-col items-center">
-      <div className='fixed md:right-2 left-2 top-52 md:top-28'>
-        <Link href='/login'>
-          <Button className='flex items-center text-xl bg-dark-blue hover:bg-blue-950 cursor-pointer dark:bg-light-blue dark:hover:bg-sky-300'>
+      <div className="fixed md:right-2 left-2 top-52 md:top-28">
+        <Link href="/login">
+          <Button className="flex items-center text-xl bg-dark-blue hover:bg-blue-950 cursor-pointer dark:bg-light-blue dark:hover:bg-sky-300">
             <ShoppingCart /> +
           </Button>
         </Link>
@@ -61,6 +61,4 @@ const ProductPage = async ({ params, searchParams }: PageProps) => {
       <p className="mt-4 text-blue-500">Sort Query Param: {sort}</p>
     </div>
   );
-};
-
-export default ProductPage;
+}
