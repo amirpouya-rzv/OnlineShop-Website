@@ -18,6 +18,6 @@ export const loginAction = async (formData: FormData) => {
   if (res.status === 200) {
     const token = res.data.token
     ;(await cookies()).set("loginToken", token)
-    redirect('/userpanel')
+    redirect('/product')
   }
 }

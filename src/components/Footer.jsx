@@ -9,7 +9,7 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center gap-8">
         {/* Logo + Info */}
         <div className="flex items-center gap-4">
-          <Image width={100} height={50} className='rounded-2xl' alt='logo' src={'/download.png'} />
+          <Image width={100} height={50} className='rounded-2xl cursor-pointer' alt='logo' src={'/download.png'} />
           <div className="text-sm md:text-base">
             <p className="font-semibold">© Created by</p>
             <p className="text-xs md:text-sm opacity-80">AMIRPOYA REZVANI</p>

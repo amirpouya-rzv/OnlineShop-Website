@@ -45,7 +45,7 @@ function Headers() {
         {/* Full Menu: Logo + Links + Icons */}
         <div
           className={`
-            md:flex md:flex-row md:justify-between items-center md:h-24
+            md:flex p-10 md:flex-row md:justify-between items-center md:h-24
             backdrop-blur-xl bg-gradient-to-r from-[#003049]/80 to-[#669bbc]/80 text-white
             fixed md:static inset-0 md:inset-auto
             overflow-hidden
@@ -61,7 +61,7 @@ function Headers() {
           {/* Logo */}
           <div onClick={() => dispatch(setShowMenu(false))} className='flex justify-center md:justify-start items-center p-2'>
             {/* <Monitor size={32} className="drop-shadow-lg" /> */}
-            <Image  width={100}  height={50} className='rounded-2xl ' alt='logo' src={'/download.png'}/>
+            <Image  width={100}  height={50} className='rounded-2xl cursor-pointer' alt='logo' src={'/download.png'}/>
           </div>
 
           {/* Links */}

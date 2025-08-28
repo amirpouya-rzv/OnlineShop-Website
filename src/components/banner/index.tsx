@@ -19,7 +19,7 @@ import Image from "next/image"
 
 export function Banner() {
     return (
-        <Carousel className="w-11/12 md:w-full">
+        <Carousel className="w-11/12 md:w-full mx-2.5 md:mx-0">
             <CarouselContent>
                 {[images2, images1, images3, images4, images5].map((image, index) => (
                     <CarouselItem key={index}>
@@ -32,8 +32,8 @@ export function Banner() {
                                         fill
                                         quality={100}
                                         className="object-cover rounded-2xl"
-                                    />                                
-                                    </CardContent>
+                                    />
+                                </CardContent>
                             </Card>
                         </div>
                     </CarouselItem>

@@ -3,10 +3,10 @@ import { loginAction } from "../../../../actions/uthActions";
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#1A1A1A] px-5 py-12">
-      <div className="w-full max-w-md bg-[#F9FAFB] dark:bg-[#2B2B2B] p-8 rounded-3xl shadow-2xl">
+    <div className="min-h-screen  flex items-center justify-center bg-white dark:bg-[#1A1A1A] py-12">
+      <div className="w-full  max-w-md bg-[#F9FAFB] dark:bg-[#2B2B2B] p-8 rounded-3xl shadow-2xl">
         <h2 className="text-3xl font-extrabold text-center text-dark-blue dark:text-white mb-8">
-          Welcome Back 👋
+          Login
         </h2>
 
         <form action={loginAction} className="space-y-6">
@@ -54,10 +54,15 @@ export default function LoginPage() {
 
         <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
           Don’t have an account?{' '}
-          <a href="/register" className="text-dark-blue hover:underline">
+          <a href="/login" className="text-dark-blue dark:text-white hover:underline">
             Sign up
           </a>
         </p>
+           <div className="mt-5 text-rose-500">
+          <p>Phone Number : 09110000000</p>
+          <p>Password : 123456</p>
+
+        </div>  
       </div>
     </div>
   )

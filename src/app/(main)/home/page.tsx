@@ -5,7 +5,7 @@ import Tab from './Tab'
 import Whattodo from './WhatToDo'
 function Home() {
   return (
-    <div className='felx flex-col'>
+    <div className='felx flex-col p-10'>
       <Banner/>
       <Tab />
       <NewProduct/>

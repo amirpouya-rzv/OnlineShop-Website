@@ -34,7 +34,7 @@ export default function RootLayout({
           <ThemeApplier />
           <main className="flex-col dark:bg-bg-dark">
             <Headers />
-            <div className="p-12  mb-20">{children}</div>
+            <div className="md:p-12   mb-20">{children}</div>
             <Footer />
           </main>
         </ReduxProvider>
