@@ -2,7 +2,9 @@ import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
+import type { ResolvingMetadata, Metadata } from 'next'; // برای متادیتا (اختیاری)
 
+// تایپ محصول
 type Product = {
   id: number;
   title: string;
@@ -12,7 +14,7 @@ type Product = {
   image: string;
 };
 
-// این باید دقیقا با اسم [productId] یکی باشه
+// ✅ generateStaticParams باید دقیقا کلید رو با اسم فایل match بده
 export async function generateStaticParams() {
   return [
     { productId: "1" },
@@ -22,12 +24,13 @@ export async function generateStaticParams() {
   ];
 }
 
+// ✅ تابع صفحه: از تایپ خود Next.js استفاده کن
 export default async function ProductPage({
   params,
   searchParams,
 }: {
   params: { productId: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams?: Record<string, string | string[] | undefined>;
 }) {
   const { productId } = params;
   const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
