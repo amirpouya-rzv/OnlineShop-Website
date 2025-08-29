@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
-import type { ResolvingMetadata, Metadata } from 'next'; // برای متادیتا (اختیاری)
+import type { ResolvingMetadata, Metadata } from 'next';
 
 // تایپ محصول
 type Product = {
@@ -24,15 +24,18 @@ export async function generateStaticParams() {
   ];
 }
 
-// ✅ تابع صفحه: از تایپ خود Next.js استفاده کن
+// ✅ Next.js 15: params و searchParams حالا Promise هستند
 export default async function ProductPage({
   params,
   searchParams,
 }: {
-  params: { productId: string };
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ productId: string }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const { productId } = params;
+  // ✅ await کردن params و searchParams
+  const { productId } = await params;
+  const resolvedSearchParams = await searchParams;
+  
   const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
 
   if (!res.ok) {
@@ -40,7 +43,7 @@ export default async function ProductPage({
   }
 
   const product: Product = await res.json();
-  const sort = searchParams?.sort || 'default';
+  const sort = resolvedSearchParams?.sort || 'default';
 
   return (
     <div className="p-4 flex flex-col items-center">
