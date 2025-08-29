@@ -3,7 +3,6 @@ import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-// تایپ محصول
 type Product = {
   id: number;
   title: string;
@@ -13,7 +12,7 @@ type Product = {
   image: string;
 };
 
-// ✅ generateStaticParams برای ISR یا SSG
+// ✅ بهتره داینامیک بسازیم
 export async function generateStaticParams() {
   const res = await fetch("https://fakestoreapi.com/products");
   const products: Product[] = await res.json();
@@ -32,7 +31,10 @@ export default async function ProductPage({
   searchParams?: Record<string, string | string[] | undefined>;
 }) {
   const { productId } = params;
-  const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
+
+  const res = await fetch(`https://fakestoreapi.com/products/${productId}`, {
+    next: { revalidate: 60 }, // ISR → هر ۶۰ ثانیه آپدیت میشه
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch product");
@@ -45,8 +47,7 @@ export default async function ProductPage({
     <div className="p-4 flex flex-col items-center">
       <div className="fixed md:right-2 left-2 top-52 md:top-28">
         <Link href="/login">
-          <Button className="flex items-center text-xl bg-dark-blue hover:bg-blue-950 
-                             cursor-pointer dark:bg-light-blue dark:hover:bg-sky-300">
+          <Button className="flex items-center text-xl bg-dark-blue hover:bg-blue-950 cursor-pointer dark:bg-light-blue dark:hover:bg-sky-300">
             <ShoppingCart /> +
           </Button>
         </Link>
