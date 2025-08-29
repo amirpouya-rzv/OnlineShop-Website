@@ -1,8 +1,7 @@
-import { Button } from '@/components/ui/button';
-import { ShoppingCart } from 'lucide-react';
-import Link from 'next/link';
-import React from 'react';
-import type { ResolvingMetadata, Metadata } from 'next'; // برای متادیتا (اختیاری)
+import { Button } from "@/components/ui/button";
+import { ShoppingCart } from "lucide-react";
+import Link from "next/link";
+import React from "react";
 
 // تایپ محصول
 type Product = {
@@ -14,17 +13,17 @@ type Product = {
   image: string;
 };
 
-// ✅ generateStaticParams باید دقیقا کلید رو با اسم فایل match بده
+// ✅ generateStaticParams برای ISR یا SSG
 export async function generateStaticParams() {
-  return [
-    { productId: "1" },
-    { productId: "2" },
-    { productId: "3" },
-    { productId: "4" },
-  ];
+  const res = await fetch("https://fakestoreapi.com/products");
+  const products: Product[] = await res.json();
+
+  return products.map((p) => ({
+    productId: p.id.toString(),
+  }));
 }
 
-// ✅ تابع صفحه: از تایپ خود Next.js استفاده کن
+// ✅ صفحه جزئیات محصول
 export default async function ProductPage({
   params,
   searchParams,
@@ -36,17 +35,18 @@ export default async function ProductPage({
   const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
 
   if (!res.ok) {
-    throw new Error('Failed to fetch product');
+    throw new Error("Failed to fetch product");
   }
 
   const product: Product = await res.json();
-  const sort = searchParams?.sort || 'default';
+  const sort = searchParams?.sort || "default";
 
   return (
     <div className="p-4 flex flex-col items-center">
       <div className="fixed md:right-2 left-2 top-52 md:top-28">
         <Link href="/login">
-          <Button className="flex items-center text-xl bg-dark-blue hover:bg-blue-950 cursor-pointer dark:bg-light-blue dark:hover:bg-sky-300">
+          <Button className="flex items-center text-xl bg-dark-blue hover:bg-blue-950 
+                             cursor-pointer dark:bg-light-blue dark:hover:bg-sky-300">
             <ShoppingCart /> +
           </Button>
         </Link>

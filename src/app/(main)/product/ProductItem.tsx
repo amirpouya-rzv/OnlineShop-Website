@@ -8,7 +8,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import AppButton from "@/components/AppButton";
-import { ShoppingCart } from "lucide-react";
 
 // تعریف نوع محصول
 type Product = {
@@ -20,28 +19,28 @@ type Product = {
   image: string;
 };
 
-async function ProductItem() {
+export default async function ProductList() {
   const res = await fetch("https://fakestoreapi.com/products", {
     next: { revalidate: 3600 },
   });
   const products: Product[] = await res.json();
 
-
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {products.map((product) => (
         <Card
           key={product.id}
-          className="hover:shadow-2xl dark:border dark:border-light-blue dark:shadow-sm dark:shadow-light-blue  dark:text-white dark:bg-dark-card bg- transition-shadow flex flex-col h-full"
+          className="hover:shadow-2xl dark:border dark:border-light-blue dark:shadow-sm dark:shadow-light-blue  
+                     dark:text-white dark:bg-dark-card transition-shadow flex flex-col h-full"
         >
           <CardHeader>
-            <CardTitle className="text-base mt-5  font-semibold line-clamp-2">
+            <CardTitle className="text-base mt-5 font-semibold line-clamp-2">
               {product.title}
             </CardTitle>
           </CardHeader>
 
-          {/* تصویر با ارتفاع ثابت */}
-          <div className="flex justify-center items-center h-48 bg-gray-50  rounded-md overflow-hidden p-2">
+          {/* تصویر */}
+          <div className="flex justify-center items-center h-48 bg-gray-50 rounded-md overflow-hidden p-2">
             <img
               alt={product.title}
               src={product.image}
@@ -64,13 +63,19 @@ async function ProductItem() {
               <span className="text-green-500">${product.price}</span>
             </div>
           </CardFooter>
-          <AppButton type="button" href={`/product/${product.id}`} className="w-10/12
-          mx-6 focus:outline-none text-white dark:bg-bg-dark-blue bg-dark-blue focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm text-center py-2.5 dark:hover:bg-dark-blue  mb-5"> more details</AppButton>
 
+          <AppButton
+            type="button"
+            href={`/product/${product.id}`}
+            className="w-10/12 mx-6 focus:outline-none text-white 
+                       dark:bg-bg-dark-blue bg-dark-blue focus:ring-4 
+                       focus:ring-green-300 font-medium rounded-lg text-sm text-center 
+                       py-2.5 dark:hover:bg-dark-blue mb-5"
+          >
+            More details
+          </AppButton>
         </Card>
       ))}
     </div>
   );
 }
-
-export default ProductItem;
