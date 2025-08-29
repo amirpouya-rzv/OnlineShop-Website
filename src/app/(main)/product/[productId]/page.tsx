@@ -1,8 +1,10 @@
-import { Button } from "@/components/ui/button";
-import { ShoppingCart } from "lucide-react";
-import Link from "next/link";
-import React from "react";
+import { Button } from '@/components/ui/button';
+import { ShoppingCart } from 'lucide-react';
+import Link from 'next/link';
+import React from 'react';
+import type { ResolvingMetadata, Metadata } from 'next'; // برای متادیتا (اختیاری)
 
+// تایپ محصول
 type Product = {
   id: number;
   title: string;
@@ -12,17 +14,17 @@ type Product = {
   image: string;
 };
 
-// ✅ بهتره داینامیک بسازیم
+// ✅ generateStaticParams باید دقیقا کلید رو با اسم فایل match بده
 export async function generateStaticParams() {
-  const res = await fetch("https://fakestoreapi.com/products");
-  const products: Product[] = await res.json();
-
-  return products.map((p) => ({
-    productId: p.id.toString(),
-  }));
+  return [
+    { productId: "1" },
+    { productId: "2" },
+    { productId: "3" },
+    { productId: "4" },
+  ];
 }
 
-// ✅ صفحه جزئیات محصول
+// ✅ تابع صفحه: از تایپ خود Next.js استفاده کن
 export default async function ProductPage({
   params,
   searchParams,
@@ -31,17 +33,14 @@ export default async function ProductPage({
   searchParams?: Record<string, string | string[] | undefined>;
 }) {
   const { productId } = params;
-
-  const res = await fetch(`https://fakestoreapi.com/products/${productId}`, {
-    next: { revalidate: 60 }, // ISR → هر ۶۰ ثانیه آپدیت میشه
-  });
+  const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
 
   if (!res.ok) {
-    throw new Error("Failed to fetch product");
+    throw new Error('Failed to fetch product');
   }
 
   const product: Product = await res.json();
-  const sort = searchParams?.sort || "default";
+  const sort = searchParams?.sort || 'default';
 
   return (
     <div className="p-4 flex flex-col items-center">
